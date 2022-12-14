@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<h1 lang="en">
+<meta charset="UTF-8">
+<title>Main Menu</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="">
+<style>
+</style>
+<input id = "Background">
+<h1 id = "backdrop">Choose a Level:</h1>
+    <style> #backdrop
+    {
+        background-color : rgb(255, 255, 255);
+    }
+    </style>
+    <!-- <style> #Background
+        {
+            background-color : rgb(255, 255, 255);
+        } -->
+    </style>
+    <style> #change
+        {
+            color : rgb(239, 22, 22);
+        }
+    </style>
+    <style> #button
+    {
+        border-color: blue;
+    }
+    </style>
+<script>
+    function change_page1(){
+  window.location.href = "LevelOne.html";
+} 
+function change_page2(){
+  window.location.href = "LevelTwo.html";
+} 
+function change_page3(){
+  window.location.href = "LevelThree.html";
+} 
+
+    function button()
+    {
+        document.getElementById("change").setAttribute("style", "color : black")
+    }
+    function buttonTwo()
+    {
+        document.getElementById("change").setAttribute("style", "color : black")
+    }
+    function buttonThree()
+    {
+        document.getElementById("change").setAttribute("style", "color : black")
+    }
+</script>
+<button id = "backdrop" onclick="buttonTwo()"> <img  onclick="change_page1()" id = "second" src="menuimages/NumberOne.webp" height ="200" width="200" /> </button>
+<button id = "backdrop" onclick="buttonTwo()"> <img  onclick="change_page2()" id = "second" src="menuimages/NumberTwo.png" height ="200" width="200" /> </button>
+<button id = "backdrop" onclick="buttonTwo()"> <img  onclick="change_page3()" id = "second" src="menuimages/NumberThree.png" height ="200" width="200" /> </button>
+<div class="">
+</div>
+
+</body>
+</html>

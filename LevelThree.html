@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Try to get to the other side!</title>
+    <style> canvas {border: 2px solid rgb(0, 4, 255); width: 100%;}</style>
+    <style>
+        @keyframes spinning {
+          from { transform: rotate(0deg) }
+          to { transform: rotate(360deg) }
+        }
+        .spin {
+          animation-name: spinning;
+          animation-duration: 3s;
+          animation-iteration-count: infinite;
+          /* linear | ease | ease-in | ease-out | ease-in-out */
+          animation-timing-function: linear;
+        }
+      </style>
+</head>
+<body>
+    <h1></h1>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <script src = "Tester.js">   </script>
+</body>
+</html>

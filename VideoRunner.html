@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vid</title>
+    <style>
+        #loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.5);
+  }
+  
+  #bgvideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%; 
+    min-height: 100%;
+  }
+      </style>
+      </div>
+</head>
+<body>
+    <div id="loading">
+        <video id="bgvideo" autoplay>
+        <source src="videos/bing.mp4" type=video/webm> 
+        </video>
+        
+    <h1></h1>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+</body>
+</html>

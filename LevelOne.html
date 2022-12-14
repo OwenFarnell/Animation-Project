@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Try to get to the other side!</title>
+    <style> canvas {border: 2px solid rgb(0, 4, 255); width: 100%;}</style>
+    <style>
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <canvas width="640" height="360" id="myCanvas"></canvas>
+    <script>
+        window.addEventListener('load', function()
+        {
+        const GAME_WIDTH = 640;
+        const GAME_HEIGHT = 360;
+        let gameIsLive = true;
+        
+
+        let enemies = [
+            {
+            xPos: 110,
+            yPos: 100,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 120,
+            yPos: 105,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 130,
+            yPos: 110,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 140,
+            yPos: 115,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 150,
+            yPos: 120,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 160,
+            yPos: 125,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 170,
+            yPos: 130,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 180,
+            yPos: 135,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 190,
+            yPos: 140,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 200,
+            yPos: 145,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 210,
+            yPos: 150,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 220,
+            yPos: 155,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 230,
+            yPos: 160,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 350,
+            yPos: 100,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 360,
+            yPos: 105,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 370,
+            yPos: 110,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 380,
+            yPos: 115,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 390,
+            yPos: 120,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 400,
+            yPos: 125,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 410,
+            yPos: 130,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 420,
+            yPos: 135,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 430,
+            yPos: 140,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 440,
+            yPos: 145,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 450,
+            yPos: 150,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            {
+            xPos: 460,
+            yPos: 155,
+            width: 40,
+            height: 40,
+            speedY: 2
+            },
+            
+            {
+            xPos: 470,
+            yPos: 160,
+            width: 40,
+            height: 40,
+            speedY: 2
+            }
+        ];
+
+        let player = {
+            xPos: 10,
+            yPos: 160,
+            speedX: 3,
+            speedY: 3,
+            width: 40,
+            height: 40,
+            isMoving: false
+        };
+        function moveSelection(event)
+        {
+            switch(event.keyCode)
+            {
+                case 38:
+                moveUp();
+                break;
+                case 40:
+                moveDown();
+                break;
+                case 37:
+                moveLeft();
+                break;
+                case 39: 
+                moveRight();
+                break;
+            }
+        }
+        function moveLeft()
+        {
+            player.xPos += player.speedX - 5;
+        }
+        function moveUp()
+        {
+            player.yPos += player.speedY - 5;
+        }
+        function moveRight()
+        {
+            player.xPos += player.speedX + 5;
+        }
+        function moveDown()
+        {
+            player.yPos += player.speedY + 5;
+        }
+        
+        let goal ={
+            xPos: 580,
+            yPos: 160,
+            width: 50,
+            height: 36
+
+        }
+        let sprites = 
+        {
+
+        };
+        function change_menu(){
+  window.location.href = "MainMenu.html";
+} 
+        let movePlayer = function()
+            {
+            player.isMoving = true;
+            };
+        
+        let stopPlayer = function()
+            {
+            player.isMoving = false;
+            };
+
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+
+        //event listener to move player
+        canvas.addEventListener("mousedown", movePlayer);
+        canvas.addEventListener("mouseup", stopPlayer);
+
+        var checkForCollision = function (rect1, rect2)
+        {
+            let closeOnWidth = Math.abs(rect1.xPos - rect2.xPos) <= Math.max(rect1.width, rect2.width);
+            let closeOnHeight = Math.abs(rect1.yPos - rect2.yPos) <= Math.max(rect1.height, rect2.height);
+            return closeOnWidth && closeOnHeight;
+        }
+        let load = function()
+        {
+            sprites.player = new Image();
+            sprites.player.src = "images/sillycar.png";
+            sprites.background = new Image();
+            sprites.background.src = "images/OIP.jfif";
+            sprites.enemy = new Image();
+            sprites.enemy.src = "images/efangoat.png";
+            sprites.goal = new Image();
+            sprites.goal.src = "images/goal.png";
+        }
+        let step = function()
+            {
+            update();
+            draw();
+            if (gameIsLive)
+            {
+            window.requestAnimationFrame(step);
+            }
+            };
+
+        let update = function()
+            {
+            if(player.isMoving)
+                {
+                player.xPos += player.speedX;
+                }
+                if(checkForCollision(player, goal))
+                    {
+                        gameIsLive = false;
+                        alert("You won!")
+                        window.location = "";
+                        change_menu();
+                    }
+            enemies.forEach(function(element) 
+                {
+                    if(checkForCollision(player, element))
+                    {
+                        gameIsLive = false;
+                        alert("Game Over!")
+                        window.location = "";
+                    }
+                element.yPos += element.speedY;
+                if(element.yPos <= 10)
+                    {
+                    element.yPos = 10;
+                    element.speedY *= -1;
+                    }
+                else if(element.yPos >= GAME_HEIGHT - 50)
+                    {
+                    element.yPos = GAME_HEIGHT - 50;
+                    element.speedY *= -1;
+                    }
+                }
+            )};
+
+        let draw = function() 
+            {
+            ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+            
+            ctx.drawImage(sprites.background, 0, 0);
+            ctx.drawImage(sprites.player, player.xPos, player.yPos);
+            ctx.drawImage(sprites.goal, goal.xPos, goal.yPos);
+            enemies.forEach(function(element, index) 
+                {
+                ctx.drawImage(sprites.enemy, element.xPos, element.yPos);
+                })
+            };
+            window.addEventListener("keydown", moveSelection, true);
+            load();
+        step();
+        });
+    </script>
+    
+</body>
+</html>
